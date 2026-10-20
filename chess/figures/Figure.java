@@ -1,4 +1,3 @@
-
 package chess.figures;
 import board.ChessBoard;
 import chess.interfaces.IntFigure;
