@@ -1,7 +1,8 @@
-package chess.core;
-import chess.enums.ChessColor;
-import chess.enums.LocationX;
+package chess.figures;
+import enums.ChessColor;
+import enums.LocationX;
 import chess.interfaces.IntBishop;
+import exceptions.InvalidMoveException;
 
 public class Bishop implements IntBishop {
     private ChessColor color;
@@ -13,9 +14,10 @@ public class Bishop implements IntBishop {
     }
 
     public Bishop(ChessColor color, LocationX col, int row) {
-        if (color == null || !new ChessBoard().verifyCoordinate(col, row)) {
+        if (color == null || col == null || row < 1 || row > 8) {
             throw new IllegalArgumentException("Invalid Bishop information");
         }
+
         this.color = color;
         column = col;
         this.row = row;
@@ -34,12 +36,14 @@ public class Bishop implements IntBishop {
     }
 
     @Override
-    public Boolean moveToBishop(LocationX X, int Y) {
+    public Boolean moveToBishop(LocationX X, int Y) throws InvalidMoveException {
         if (X == null || Y < 1 || Y > 8) {
-            return false;
+            throw new InvalidMoveException("Target position must be within the chessboard.");
         }
+
         int colDiff = Math.abs(X.ordinal() - column.ordinal());
         int rowDiff = Math.abs(Y - row);
+
         return colDiff == rowDiff && colDiff > 0;
     }
 
