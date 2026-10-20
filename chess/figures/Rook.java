@@ -1,28 +1,29 @@
-package chess.core;
-import chess.enums.ChessClass;
-import chess.enums.ChessColor;
-import chess.enums.LocationX;
+package chess.figures;
+import enums.ChessPieceName;
+import enums.ChessColor;
+import enums.LocationX;
+import exceptions.InvalidMoveException;
 
 public class Rook extends Figure {
     public Rook() {
-        super(ChessClass.ROOK, ChessColor.WHITE, LocationX.a, 1);
+        super(ChessPieceName.ROOK, ChessColor.WHITE, LocationX.a, 1);
     }
 
     public Rook(ChessColor color, LocationX col, int row) {
-        this(ChessClass.ROOK, color, col, row);
+        this(ChessPieceName.ROOK, color, col, row);
     }
 
-    protected Rook(ChessClass name, ChessColor color, LocationX col, int row) {
+    protected Rook(ChessPieceName name, ChessColor color, LocationX col, int row) {
         super(name, color, col, row);
     }
 
     @Override
-    public Boolean moveTo(LocationX X, int Y) {
-        if (X == null || Y < 1 || Y > 8) {
-            return false;
-        }
+    public Boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
+        validateTarget(X, Y);
+
         boolean sameRow = Y == get_row();
         boolean sameColumn = X == get_col();
+
         return (sameRow || sameColumn) && !(sameRow && sameColumn);
     }
 
