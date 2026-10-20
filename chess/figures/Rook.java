@@ -1,6 +1,4 @@
-
 package chess.core;
-
 import chess.enums.ChessClass;
 import chess.enums.ChessColor;
 import chess.enums.LocationX;
