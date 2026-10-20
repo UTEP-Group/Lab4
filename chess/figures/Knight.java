@@ -1,24 +1,25 @@
-package chess.core;
-import chess.enums.ChessClass;
-import chess.enums.ChessColor;
-import chess.enums.LocationX;
+package chess.figures;
+import enums.ChessPieceName;
+import enums.ChessColor;
+import enums.LocationX;
+import exceptions.InvalidMoveException;
 
 public class Knight extends Figure {
     public Knight() {
-        super(ChessClass.KNIGHT, ChessColor.WHITE, LocationX.a, 1);
+        super(ChessPieceName.KNIGHT, ChessColor.WHITE, LocationX.a, 1);
     }
 
     public Knight(ChessColor color, LocationX col, int row) {
-        super(ChessClass.KNIGHT, color, col, row);
+        super(ChessPieceName.KNIGHT, color, col, row);
     }
 
     @Override
-    public Boolean moveTo(LocationX X, int Y) {
-        if (X == null || Y < 1 || Y > 8) {
-            return false;
-        }
+    public Boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
+        validateTarget(X, Y);
+
         int colDiff = Math.abs(X.ordinal() - get_col().ordinal());
         int rowDiff = Math.abs(Y - get_row());
+
         return (colDiff == 2 && rowDiff == 1) || (colDiff == 1 && rowDiff == 2);
     }
 
