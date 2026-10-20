@@ -1,11 +1,14 @@
-package chess.core;
-import chess.enums.ChessClass;
-import chess.enums.ChessColor;
-import chess.enums.LocationX;
+
+package chess.figures;
+import board.ChessBoard;
 import chess.interfaces.IntFigure;
+import enums.ChessPieceName;
+import enums.ChessColor;
+import enums.LocationX;
+import exceptions.InvalidMoveException;
 
 public abstract class Figure implements IntFigure {
-    private ChessClass piece_name;
+    private ChessPieceName piece_name;
     private ChessColor color;
     private LocationX column;
     private int row;
@@ -13,14 +16,14 @@ public abstract class Figure implements IntFigure {
     public Figure() {
     }
 
-    public Figure(ChessClass name, ChessColor color, LocationX col, int row) {
+    public Figure(ChessPieceName name, ChessColor color, LocationX col, int row) {
         set_piece_Name(name);
         setColor(color);
         set_col(col);
         set_row(row);
     }
 
-    public ChessClass get_piece_Name() {
+    public ChessPieceName get_piece_Name() {
         return piece_name;
     }
 
@@ -36,7 +39,7 @@ public abstract class Figure implements IntFigure {
         return row;
     }
 
-    public void set_piece_Name(ChessClass name) {
+    public void set_piece_Name(ChessPieceName name) {
         if (name == null) {
             throw new IllegalArgumentException("Invalid piece name");
         }
@@ -62,5 +65,11 @@ public abstract class Figure implements IntFigure {
             throw new IllegalArgumentException("Row must be between 1 and 8");
         }
         this.row = row;
+    }
+
+    protected void validateTarget(LocationX X, int Y) throws InvalidMoveException {
+        if (X == null || Y < ChessBoard.MIN_ROW || Y > ChessBoard.MAX_ROW) {
+            throw new InvalidMoveException("Target position must be within the chessboard.");
+        }
     }
 }
