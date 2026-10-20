@@ -1,4 +1,3 @@
-
 package chess.core;
 
 import chess.enums.ChessClass;
