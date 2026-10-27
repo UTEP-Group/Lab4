@@ -84,19 +84,19 @@ public class Main {
         // 4. Traverse Polymorphic Array
 
         for (int i = 0; i < figures.length; i++) {
-           Figure fig = figures[i];
-           try {
-               boolean canMove = fig.moveTo(targetCol, targetRow);
+            Figure fig = figures[i];
+            try {
+            boolean canMove = fig.moveTo(targetCol, targetRow);
         
-             if (canMove) {
-                  System.out.println(fig.toString() + " CAN move to " + targetCol + targetRow);
-              } else {
-                 System.out.println(fig.toString() + " CANNOT move to " + targetCol + targetRow);
-               }
+            if (canMove) {
+                System.out.println(fig.toString() + " CAN move to " + targetCol + targetRow);
+                } else {
+                    System.out.println(fig.toString() + " CANNOT move to " + targetCol + targetRow);
+                }
         
-           } catch (InvalidMoveException e) {
-               System.out.println(fig.toString() + " invalid move attempt: " + e.getMessage());
-           }
+            } catch (InvalidMoveException e) {
+                System.out.println(fig.toString() + " invalid move attempt: " + e.getMessage());
+            }
         }
 
         try {
@@ -163,12 +163,12 @@ public class Main {
 
     private static Figure createFigure(ChessPieceName type, ChessColor color, LocationX col, int row) {
         switch (type) {
-            case PAWN:   return new Pawn(color, col, row);
-            case ROOK:   return new Rook(color, col, row);
+            case PAWN: return new Pawn(color, col, row);
+            case ROOK: return new Rook(color, col, row);
             case KNIGHT: return new Knight(color, col, row);
-            case QUEEN:  return new Queen(color, col, row);
-            case KING:   return new King(color, col, row);
-            default:     return null;
+            case QUEEN: return new Queen(color, col, row);
+            case KING: return new King(color, col, row);
+            default: return null;
         }
     }
 }
