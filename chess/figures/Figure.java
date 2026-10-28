@@ -1,6 +1,6 @@
 package chess.figures;
 import board.ChessBoard;
-import chess.interfaces.IntFigure;
+import interfaces.IntFigure;
 import enums.ChessPieceName;
 import enums.ChessColor;
 import enums.LocationX;

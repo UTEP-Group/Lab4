@@ -1,6 +1,5 @@
 package board;
 import enums.LocationX;
-import chess.interfaces.IntChessBoard;
 import exceptions.InvalidCoordinateException;
 
 public class ChessBoard implements IntChessBoard {

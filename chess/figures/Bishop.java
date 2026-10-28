@@ -1,7 +1,7 @@
 package chess.figures;
 import enums.ChessColor;
 import enums.LocationX;
-import chess.interfaces.IntBishop;
+import interfaces.IntBishop;
 import exceptions.InvalidMoveException;
 
 public class Bishop implements IntBishop {
@@ -36,7 +36,7 @@ public class Bishop implements IntBishop {
     }
 
     @Override
-    public Boolean moveToBishop(LocationX X, int Y) throws InvalidMoveException {
+    public boolean moveToBishop(LocationX X, int Y) throws InvalidMoveException {
         if (X == null || Y < 1 || Y > 8) {
             throw new InvalidMoveException("Target position must be within the chessboard.");
         }

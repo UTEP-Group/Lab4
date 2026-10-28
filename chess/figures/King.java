@@ -14,7 +14,7 @@ public class King extends Queen {
     }
 
     @Override
-    public Boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
+    public boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
         validateTarget(X, Y);
 
         int colDiff = Math.abs(X.ordinal() - get_col().ordinal());

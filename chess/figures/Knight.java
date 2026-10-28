@@ -4,28 +4,23 @@ import enums.ChessColor;
 import enums.LocationX;
 import exceptions.InvalidMoveException;
 
-public class Pawn extends Figure {
-    public Pawn() {
-        super(ChessPieceName.PAWN, ChessColor.WHITE, LocationX.a, 1);
+public class Knight extends Figure {
+    public Knight() {
+        super(ChessPieceName.KNIGHT, ChessColor.WHITE, LocationX.a, 1);
     }
 
-    public Pawn(ChessColor color, LocationX col, int row) {
-        super(ChessPieceName.PAWN, color, col, row);
+    public Knight(ChessColor color, LocationX col, int row) {
+        super(ChessPieceName.KNIGHT, color, col, row);
     }
 
     @Override
-    public Boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
+    public boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
         validateTarget(X, Y);
 
-        if (X != get_col()) {
-            return false;
-        }
+        int colDiff = Math.abs(X.ordinal() - get_col().ordinal());
+        int rowDiff = Math.abs(Y - get_row());
 
-        if (getColor() == ChessColor.WHITE) {
-            return Y == get_row() + 1;
-        }
-
-        return Y == get_row() - 1;
+        return (colDiff == 2 && rowDiff == 1) || (colDiff == 1 && rowDiff == 2);
     }
 
     @Override

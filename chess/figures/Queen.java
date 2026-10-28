@@ -3,7 +3,7 @@ import enums.ChessPieceName;
 import enums.ChessColor;
 import enums.LocationX;
 import exceptions.InvalidMoveException;
-import chess.interfaces.IntBishop;
+import interfaces.IntBishop;
 
 public class Queen extends Rook implements IntBishop {
     public Queen() {
@@ -19,7 +19,7 @@ public class Queen extends Rook implements IntBishop {
     }
 
     @Override
-    public Boolean moveToBishop(LocationX X, int Y) throws InvalidMoveException {
+    public boolean moveToBishop(LocationX X, int Y) throws InvalidMoveException {
         validateTarget(X, Y);
 
         int colDiff = Math.abs(X.ordinal() - get_col().ordinal());
@@ -29,7 +29,7 @@ public class Queen extends Rook implements IntBishop {
     }
 
     @Override
-    public Boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
+    public boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
         return super.moveTo(X, Y) || moveToBishop(X, Y);
     }
 

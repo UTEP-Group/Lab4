@@ -18,7 +18,7 @@ public class Rook extends Figure {
     }
 
     @Override
-    public Boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
+    public boolean moveTo(LocationX X, int Y) throws InvalidMoveException {
         validateTarget(X, Y);
 
         boolean sameRow = Y == get_row();

@@ -1,4 +1,4 @@
-package chess.interfaces;
+package board;
 import enums.LocationX;
 import exceptions.InvalidCoordinateException;
 
